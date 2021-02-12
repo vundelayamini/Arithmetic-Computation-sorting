@@ -1,16 +1,24 @@
 #!/bin/bash -x
-echo "Enter the three inputs"
+
+echo "Enter three inputs are :"a b c
 read a b c
 echo "Three inputs are :" $a $b $c
 
-result1=$(( $a + $b * $c ))
-echo " Result for the firt computation :"$result1
+declare -A Allresult
 
-result2=$(( $a * $b + $c ))
-echo "Result for the second computation :"$result2
+result1=$(($a + $b * $c))
+echo "Result for the first computation:" $result1
 
-result3=$(( $c + $a / $b ))
+result2=$(($a * $b + $c))
+echo "Result for the second computation:"$result2
+
+result3=$(($c + $a / $c))
 echo "Result for the third computation :"$result3
 
-result4=$(( $a % $b + $c ))
+result4=$(($a % $b + $c))
 echo "Result for the forth computation :"$result4
+
+echo "All result ${result[@]}"
+echo "${!result[@]}"
+
+
