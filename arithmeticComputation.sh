@@ -11,3 +11,6 @@ echo "Result for the second computation :"$result2
 
 result3=$(( $c + $a / $b ))
 echo "Result for the third computation :"$result3
+
+result4=$(( $a % $b + $c ))
+echo "Result for the forth computation :"$result4
