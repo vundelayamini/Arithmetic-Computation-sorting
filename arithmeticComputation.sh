@@ -1,15 +1,13 @@
-
 #!/bin/bash -x
 
-echo "Enter three inputs are :"a b c
+declare -A Allresult
+
+echo "Enter three inputs are in descending order:"a b c
 read a b c
 echo "Three inputs are :" $a $b $c
 
-declare -A Allresult
-counter=1
-
 result1=$(($a + $b * $c))
-echo "Result for the first computation:" $result1
+echo "Result for the second computation:"$result1
 
 result2=$(($a * $b + $c))
 echo "Result for the second computation:"$result2
@@ -20,14 +18,31 @@ echo "Result for the third computation :"$result3
 result4=$(($a % $b + $c))
 echo "Result for the forth computation :"$result4
 
-echo "${!Allreult[@]}"
-echo "All result ${result[@]}"
-echo "${!result[@]}"
+Allresult[1]=$result1
+Allresult[2]=$result2
+Allresult[3]=$result3
+Allresult[4]=$result4
 
-counter[1]=${Allresult[result1]}
-counter[2]=${Allresult[result2]}
-counter[3]=${Allresult[result3]}
-counter[4]=${Allresult[result4]}
+array[0]=$((result[1]))
+array[1]=$((result[2]))
+array[2]=$((result[3]))
+array[3]=$((result[4]))
 
-echo  ${counter[@]}
+echo ${array[@]}
+
+for (( a=0; a<3; a++ ))
+do
+	for (( c=0; c<3; c++ ))
+	do
+		if [ ${array[$c]} -le ${array[$(($c+1))]} ]
+		then
+			temp=${array[$c]}
+			array[$c]=${array[$(($c+1))]}
+			array[$(($c+1))]=$temp
+		fi
+	done
+done
+
+echo ${array[@]}
+
 
