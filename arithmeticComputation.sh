@@ -34,7 +34,7 @@ for (( a=0; a<3; a++ ))
 do
 	for (( c=0; c<3; c++ ))
 	do
-		if [ ${array[$c]} -le ${array[$(($c+1))]} ]
+		if [ ${array[$c]} -ge ${array[$(($c+1))]} ]
 		then
 			temp=${array[$c]}
 			array[$c]=${array[$(($c+1))]}
